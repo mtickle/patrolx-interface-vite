@@ -1,9 +1,8 @@
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider, Outlet, Link } from 'react-router-dom';
-import Header from './components/header'
+import Header from './components/layout/header'
+import Footer from './components/layout/footer';
 import CallsPage from './routes/calls'
 import HomePage from './routes/home'
-import ErrorPage from "./error-page";
-
 
 const HeaderLayout = () => (
   <>
@@ -11,6 +10,9 @@ const HeaderLayout = () => (
       <Header />
     </header>
     <Outlet />
+    <footer>
+      <Footer />
+    </footer>
   </>
 );
 
