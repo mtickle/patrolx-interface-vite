@@ -4,8 +4,7 @@ import React, { useRef } from 'react';
 import { DataEndpoint } from '../../components/data/data_endpoint';
 
 //-- TABLE
-import  DataTable  from '../../components/layout/data_table';
-import { useTable, usePagination, useSortBy } from 'react-table'
+import DataTable from '../../components/layout/data_table';
 
 //--- MAP
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
@@ -13,6 +12,8 @@ import "leaflet/dist/leaflet.css"
 
 //--- CHARTS
 import { CallCountsByAgencyBarChart } from './call_counts_by_agency';
+import { CallCountsByIncidentBarChart } from './call_counts_by_incident';
+import { CallCountsByEmdCodeBarChart } from './call_counts_by_emd_code';
 
 function PageName() {
   return "Calls"
@@ -75,6 +76,16 @@ function PageCharts() {
             <CallCountsByAgencyBarChart />
           </div>
         </div>
+        <div className="row">
+          <div className="col-lg">
+            <CallCountsByIncidentBarChart />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-lg">
+            <CallCountsByEmdCodeBarChart />
+          </div>
+        </div>
       </div>
     </>
   )
@@ -117,9 +128,8 @@ function TableColumns() {
 export default function CallsPage() {
 
   var tableColumns = TableColumns();
-  var tableData = DataEndpoint("getAllCalls", 10);
-   var mapData = DataEndpoint("getAllCalls", 20);
-
+  var tableData = DataEndpoint("getAllCalls", 100);
+  var mapData = DataEndpoint("getAllCalls", 20);
 
   return (
     <div className="container-xl">
@@ -127,15 +137,14 @@ export default function CallsPage() {
 
       <p></p>
       <div className="card">
-          <div className="card-header">
-            Charts
-          </div>
-          <div className="card-body">
-            <PageCharts />
-          </div>
-
+        <div className="card-header">
+          Charts
         </div>
-        <p></p>
+        <div className="card-body">
+          <PageCharts />
+        </div>
+      </div>
+      <p></p>
 
       <div className="card">
         <div className="card-header">
@@ -151,7 +160,7 @@ export default function CallsPage() {
           Data
         </div>
         <div className="card-body">
-        <PageTable  columns={tableColumns} data={tableData}/>
+          <PageTable columns={tableColumns} data={tableData} />
         </div>
       </div>
     </div>
