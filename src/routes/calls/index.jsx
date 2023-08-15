@@ -14,6 +14,7 @@ import "leaflet/dist/leaflet.css"
 import { CallCountsByAgencyBarChart } from './call_counts_by_agency';
 import { CallCountsByIncidentBarChart } from './call_counts_by_incident';
 import { CallCountsByEmdCodeBarChart } from './call_counts_by_emd_code';
+import { CallCountsByHourLineChart } from './call_counts_by_hour';
 
 function PageName() {
   return "Calls"
@@ -72,18 +73,19 @@ function PageCharts() {
     <>
       <div className="container">
         <div className="row">
-          <div className="col-lg">
+          <div className="col-md">
             <CallCountsByAgencyBarChart />
           </div>
-        </div>
-        <div className="row">
-          <div className="col-lg">
+          <div className="col-md">
             <CallCountsByIncidentBarChart />
           </div>
         </div>
         <div className="row">
-          <div className="col-lg">
+          <div className="col-md">
             <CallCountsByEmdCodeBarChart />
+          </div>
+          <div className="col-md">
+            <CallCountsByHourLineChart /> 
           </div>
         </div>
       </div>

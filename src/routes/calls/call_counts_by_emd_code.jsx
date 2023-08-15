@@ -17,12 +17,7 @@ export const CallCountsByEmdCodeBarChart = () => {
         label: 'Calls for Assistance', // Replace with your dataset label
         data: chartActualData.map(item => item.EmdCodeCount), // Replace 'value' with your data property
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
+          'rgba(64, 122, 255, 0.8)',
         ],
         borderColor: 'rgba(51, 0, 213, 1)',
         borderWidth: 1,
@@ -35,7 +30,7 @@ export const CallCountsByEmdCodeBarChart = () => {
   const chartOptions = {
     plugins: {
       legend: {
-        display: true,
+        display: false,
         position: 'right',
       },
     },
