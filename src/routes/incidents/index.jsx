@@ -11,13 +11,15 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 import "leaflet/dist/leaflet.css"
 
 //--- CHARTS
-import { CallCountsByAgencyBarChart } from './call_counts_by_agency';
-import { CallCountsByIncidentBarChart } from './call_counts_by_incident';
-import { CallCountsByEmdCodeBarChart } from './call_counts_by_emd_code';
-import { CallCountsByHourLineChart } from './call_counts_by_hour';
+// import { CallCountsByAgencyBarChart } from './call_counts_by_agency';
+// import { CallCountsByIncidentBarChart } from './call_counts_by_incident';
+// import { CallCountsByEmdCodeBarChart } from './call_counts_by_emd_code';
+// import { CallCountsByHourLineChart } from './call_counts_by_hour';
+import { IncidentCountsByTypeBarChart } from './incident_counts_by_type';
+import { IncidentCountsByDistrictBarChart } from './incident_counts_by_district';
 
 function PageName() {
-  return "Calls"
+  return "Incidents"
 }
 
 function PageMap({ data }) {
@@ -54,11 +56,11 @@ function PageMap({ data }) {
           };
 
           return <Marker key={index} position={position}>
-            <Popup>
-              {item.callDate} at {item.callTime}<br />
-              {item.agency}<br />
-              {item.incidentType}<br />
-              {item.location}<br />
+             <Popup>
+              {item.reportedDate} at {item.reportedTime}<br />
+              {item.crimeDescription}<br />
+              {item.reportedBlockAddress}<br />
+              {item.district}<br />
             </Popup>
           </Marker>
         })}
@@ -74,20 +76,13 @@ function PageCharts() {
       <div className="container">
         <div className="row">
           <div className="col-md">
-            <CallCountsByAgencyBarChart />
+            <IncidentCountsByTypeBarChart />
           </div>
           <div className="col-md">
-            <CallCountsByIncidentBarChart />
+          <IncidentCountsByDistrictBarChart />
           </div>
         </div>
-        <div className="row">
-          <div className="col-md">
-            <CallCountsByEmdCodeBarChart />
-          </div>
-          <div className="col-md">
-            <CallCountsByHourLineChart /> 
-          </div>
-        </div>
+       
       </div>
     </>
   )
@@ -98,28 +93,28 @@ function PageTable({ columns, data }) {
 }
 
 function TableColumns() {
-
+  
   const columns = React.useMemo(
     () => [
       {
         Header: 'Date',
-        accessor: 'callDate',
+        accessor: 'reportedDate',
       },
       {
         Header: 'Time',
-        accessor: 'callTime',
+        accessor: 'reportedTime',
       },
       {
-        Header: 'Responding Agency',
-        accessor: 'agency',
+        Header: 'Crime Code',
+        accessor: 'crimeCode',
       },
       {
-        Header: 'Incident',
-        accessor: 'incidentType',
+        Header: 'Description',
+        accessor: 'crimeDescription',
       },
       {
-        Header: 'Location',
-        accessor: 'location',
+        Header: 'District',
+        accessor: 'district',
       }
     ],
     []
@@ -127,9 +122,9 @@ function TableColumns() {
   return columns
 }
 
-export default function CallsPage() {
+export default function IncidentsPage() {
 
-  var getAllName = "getAllCalls"
+  var getAllName = "getAllIncidents"
   var tableColumns = TableColumns();
   var tableData = DataEndpoint(getAllName, 100);
   var mapData = DataEndpoint(getAllName, 20);
@@ -144,7 +139,7 @@ export default function CallsPage() {
           Charts
         </div>
         <div className="card-body">
-          <PageCharts />
+          <PageCharts /> 
         </div>
       </div>
       <p></p>

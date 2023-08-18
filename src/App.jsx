@@ -2,6 +2,7 @@ import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider, O
 import Header from './components/layout/header'
 import Footer from './components/layout/footer';
 import CallsPage from './routes/calls'
+import IncidentsPage from './routes/incidents'
 import HomePage from './routes/home'
 
 const HeaderLayout = () => (
@@ -27,7 +28,11 @@ const router = createBrowserRouter([
       {
         path: "calls/",
         element: <CallsPage />,
-      },]
+      },
+      {
+        path: "incidents/",
+        element: <IncidentsPage />,
+      }]
   },
 
 ]);
