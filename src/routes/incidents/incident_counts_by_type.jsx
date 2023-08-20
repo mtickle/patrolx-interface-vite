@@ -1,7 +1,7 @@
 import React from "react";
 import { Bar } from 'react-chartjs-2';
-import { ChartDataLibrary } from '../../components/data/chart_data_library'
 
+import { ChartDataLibrary } from '../../components/data/chart_data_library'
 
 export const IncidentCountsByTypeBarChart = () => {
 
@@ -17,14 +17,14 @@ export const IncidentCountsByTypeBarChart = () => {
         borderColor: 'rgba(110, 110, 110, 0.8)',
         borderWidth: 1,
         indexAxis: 'y',
-        backgroundColor: [
-          'rgba(64, 122, 255, 0.8)',
-        ],
       },
     ]
   }
   const chartOptions = {
     plugins: {
+      autocolors: {
+        enabled: true
+      },
       legend: {
         display: false,
         position: 'bottom',

@@ -17,6 +17,8 @@ import "leaflet/dist/leaflet.css"
 // import { CallCountsByHourLineChart } from './call_counts_by_hour';
 import { IncidentCountsByTypeBarChart } from './incident_counts_by_type';
 import { IncidentCountsByDistrictBarChart } from './incident_counts_by_district';
+import { IncidentsCountsByHourLineChart } from './incident_counts_by_hour';
+import { IncidentsCountsByDayLineChart } from './incident_counts_by_day';
 
 function PageName() {
   return "Incidents"
@@ -82,7 +84,14 @@ function PageCharts() {
           <IncidentCountsByDistrictBarChart />
           </div>
         </div>
-       
+        <div className="row">
+          <div className="col-md">
+            <IncidentsCountsByHourLineChart />
+          </div>
+          <div className="col-md">
+          <IncidentsCountsByDayLineChart />
+          </div>
+        </div>
       </div>
     </>
   )
