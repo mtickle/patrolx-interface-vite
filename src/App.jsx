@@ -4,6 +4,7 @@ import Footer from './components/layout/footer';
 import CallsPage from './routes/calls'
 import IncidentsPage from './routes/incidents'
 import HomePage from './routes/home'
+import AdsbPage from './routes/adsb';
 
 const HeaderLayout = () => (
   <>
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "calls/",
         element: <CallsPage />,
+      },
+      {
+        path: "adsb/",
+        element: <AdsbPage />,
       },
       {
         path: "incidents/",

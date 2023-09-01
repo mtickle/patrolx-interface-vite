@@ -13,7 +13,6 @@
     "axios": "^1.4.0",
     "bootstrap": "^5.3.1",
     "chart.js": "^4.3.3",
-    "chartjs-plugin-autocolors": "^0.2.2",
     "dotenv": "^16.3.1",
     "leaflet": "^1.9.4",
     "localforage": "^1.10.0",

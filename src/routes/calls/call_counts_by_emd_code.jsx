@@ -11,14 +11,12 @@ export const CallCountsByEmdCodeBarChart = () => {
     var chartActualData = ChartDataLibrary("getCallCountsByEmdCode", 10);
 
     const chartData = {
-    labels: chartActualData.map(item => item._id), // Replace 'label' with your data property
+    labels: chartActualData.map(item => item._id), 
     datasets: [
       {
-        label: 'Calls for Assistance', // Replace with your dataset label
-        data: chartActualData.map(item => item.EmdCodeCount), // Replace 'value' with your data property
-        backgroundColor: [
-          'rgba(64, 122, 255, 0.8)',
-        ],
+        label: 'Calls for Assistance', 
+        data: chartActualData.map(item => item.EmdCodeCount), 
+        backgroundColor: ['#2a9d8f', '#e9c46a', '#f4a261', '#e76f51','#ca6702','#bb3e03','#ae2012','#9b2226'],
         borderColor: 'rgba(51, 0, 213, 1)',
         borderWidth: 1,
         indexAxis: 'y',
