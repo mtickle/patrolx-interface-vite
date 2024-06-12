@@ -18,7 +18,8 @@ export const AdsbDataEndPoint = (apiEndPoint, itemCount) => {
     };
 
     const client = axios.create({
-        baseURL: "https://starfish-app-btyak.ondigitalocean.app/api/" + apiEndPoint
+        baseURL: "http://localhost:8080/api/" + apiEndPoint
+       // baseURL: "https://starfish-app-btyak.ondigitalocean.app/api/" + apiEndPoint
     });
 
     React.useEffect(() => {

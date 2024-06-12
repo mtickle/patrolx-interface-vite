@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 //--- DATA
 import { DataEndpoint } from '../../components/data/data_endpoint';
@@ -120,6 +121,15 @@ function TableColumns() {
       {
         Header: 'Location',
         accessor: 'location',
+      },
+      {
+        Header: "",
+        id: "",
+        accessor: "_id",
+          Cell: ({ row }) => (<Link className="btn-outline-primary btn-small" to={{ 
+            pathname: `/call`,
+            search:  `?id=${row.original._id}`,
+          }}>View</Link>)            
       }
     ],
     []

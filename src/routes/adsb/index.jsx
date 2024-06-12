@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 //--- DATA
 import { AdsbDataEndPoint} from  '../../components/data/data_endpoint_adsb';
-import { DataEndpoint } from '../../components/data/data_endpoint';
+//import { DataEndpoint } from '../../components/data/data_endpoint';
 
 //-- TABLE
 import DataTable from '../../components/layout/data_table';
@@ -107,17 +108,23 @@ function TableColumns() {
   const columns = React.useMemo(
     () => [
       {
-        Header: 'Hex',
-        accessor: 'hex_code',
+        Header: "Flight",
+        id: "",
+        accessor: "_id",
+        Cell: ({ row }) => (<Link className="btn-outline-primary btn-small" to={{ 
+            pathname: `flight`,
+            search:  `?id=${row.original._id}`,
+          }}>{row.original._id}</Link>)            
       },
       {
-        Header: 'Type',
-        accessor: 'type_code',
+        Header: 'Last Seen',
+        accessor: 'Timestamp',
       },
       {
-        Header: 'Flight',
-        accessor: 'flight',
-      }
+        Header: 'Count',
+        accessor: 'FlightCount',
+      },
+    
     ],
     []
   )
@@ -126,7 +133,7 @@ function TableColumns() {
 
 export default function AdsbPage() {
 
-  var getAllName = "getAllFlights"
+  var getAllName = "getAllFlightViews"
   var tableColumns = TableColumns();
   var tableData = AdsbDataEndPoint(getAllName, 100);
   var mapData = AdsbDataEndPoint(getAllName, 20);
